@@ -16,7 +16,7 @@ using MudBlazor.Utilities;
 namespace MudBlazor
 {
     [RequiresUnreferencedCode(CodeMessage.SerializationUnreferencedCodeMessage)]
-    public partial class Column<T> : MudComponentBase
+    public partial class Column<T> : MudComponentBase, IDisposable
     {
         [CascadingParameter] public MudDataGrid<T> DataGrid { get; set; }
 
@@ -401,6 +401,11 @@ namespace MudBlazor
             Hidden = !Hidden;
             await HiddenChanged.InvokeAsync(Hidden);
             DataGrid.ExternalStateHasChanged();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
